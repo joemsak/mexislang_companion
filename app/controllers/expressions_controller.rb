@@ -13,6 +13,10 @@ class ExpressionsController < ApplicationController
   # GET /expressions/new
   def new
     @expression = Expression.new
+    @root_words = RootWord.all
+    @chapters = Chapter.all
+    @root_word = RootWord.new
+    @root_word.build_chapter
   end
 
   # GET /expressions/1/edit
@@ -28,6 +32,11 @@ class ExpressionsController < ApplicationController
         format.html { redirect_to @expression, notice: "Expression was successfully created." }
         format.json { render :show, status: :created, location: @expression }
       else
+        @root_words = RootWord.all
+        @chapters = Chapter.all
+        @root_word = @expression.root_word || RootWord.new
+        @root_word.build_chapter unless @root_word.chapter
+
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @expression.errors, status: :unprocessable_entity }
       end

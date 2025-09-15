@@ -1,0 +1,9 @@
+<%= content_tag :div, data: { controller: :toggle } do %>
+  <%= button_tag data: { toggle_target: :switch, action: 'toggle#toggle:prevent' } do %>
+    <%= switch_text %>
+  <% end %>
+
+  <%= content_tag :div, data: { toggle_target: :content } do %>
+    <%= render partial:, locals: %>
+  <% end %>
+<% end %>

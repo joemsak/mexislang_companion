@@ -13,6 +13,8 @@ class RootWordsController < ApplicationController
   # GET /root_words/new
   def new
     @root_word = RootWord.new
+    @chapters = Chapter.all
+    @root_word.build_chapter
   end
 
   # GET /root_words/1/edit
@@ -28,6 +30,9 @@ class RootWordsController < ApplicationController
         format.html { redirect_to @root_word, notice: "Root word was successfully created." }
         format.json { render :show, status: :created, location: @root_word }
       else
+        @chapters = Chapter.all
+        @root_word.build_chapter unless @root_word.chapter
+
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @root_word.errors, status: :unprocessable_entity }
       end
