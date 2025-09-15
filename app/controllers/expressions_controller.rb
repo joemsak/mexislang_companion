@@ -21,6 +21,9 @@ class ExpressionsController < ApplicationController
 
   # GET /expressions/1/edit
   def edit
+    @root_words = RootWord.all
+    @chapters = Chapter.all
+    @root_word = @expression.root_word
   end
 
   # POST /expressions or /expressions.json
@@ -50,6 +53,10 @@ class ExpressionsController < ApplicationController
         format.html { redirect_to @expression, notice: "Expression was successfully updated.", status: :see_other }
         format.json { render :show, status: :ok, location: @expression }
       else
+        @root_words = RootWord.all
+        @chapters = Chapter.all
+        @root_word = @expression.root_word
+
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @expression.errors, status: :unprocessable_entity }
       end

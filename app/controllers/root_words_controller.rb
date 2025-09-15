@@ -19,6 +19,7 @@ class RootWordsController < ApplicationController
 
   # GET /root_words/1/edit
   def edit
+    @chapters = Chapter.all
   end
 
   # POST /root_words or /root_words.json
@@ -46,6 +47,8 @@ class RootWordsController < ApplicationController
         format.html { redirect_to @root_word, notice: "Root word was successfully updated.", status: :see_other }
         format.json { render :show, status: :ok, location: @root_word }
       else
+        @chapters = Chapter.all
+
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @root_word.errors, status: :unprocessable_entity }
       end

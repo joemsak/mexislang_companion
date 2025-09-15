@@ -11,6 +11,11 @@
 <% end %>
 
 <div class="my-5">
+  <%= builder.label :number %>
+  <%= builder.number_field :number, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": chapter.errors[:number].none?, "border-red-400 focus:outline-red-600": chapter.errors[:number].any?}] %>
+</div>
+
+<div class="my-5">
   <%= builder.label :title %>
   <%= builder.text_field :title, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": chapter.errors[:title].none?, "border-red-400 focus:outline-red-600": chapter.errors[:title].any?}] %>
 </div>

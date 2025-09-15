@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_15_164315) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_15_180737) do
   create_table "chapters", force: :cascade do |t|
     t.string "title"
     t.integer "page"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "number"
   end
 
   create_table "expressions", force: :cascade do |t|

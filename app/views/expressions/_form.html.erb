@@ -31,12 +31,14 @@
     <%= form.collection_select :root_word_id, root_words, :id, :display_name, { prompt: true, selected: form.object.root_word_id }, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": expression.errors[:root_word_id].none?, "border-red-400 focus:outline-red-600": expression.errors[:root_word_id].any?}] %>
   </div>
 
-  <%= fields_for "expression[root_word_attributes]", root_word do |rw| %>
-    <%= render 'shared/toggle',
-      switch_text: 'Add Root Word',
-      partial: 'root_words/fields',
-      locals: { builder: rw, root_word:, chapters: } %>
-  <% end %>
+  <div class="my-5">
+    <%= fields_for "expression[root_word_attributes]", root_word do |rw| %>
+      <%= render 'shared/toggle',
+        switch_text: 'Add Root Word',
+        partial: 'root_words/fields',
+        locals: { builder: rw, root_word:, chapters: } %>
+    <% end %>
+  </div>
 
   <div class="inline">
     <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>

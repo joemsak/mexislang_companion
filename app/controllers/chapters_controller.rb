@@ -65,6 +65,6 @@ class ChaptersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def chapter_params
-      params.expect(chapter: [ :title, :page ])
+      params.expect(chapter: [ :number, :title, :page ])
     end
 end

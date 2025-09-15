@@ -25,10 +25,11 @@
   <%= builder.collection_select :chapter_id, chapters, :id, :title, { prompt: true, selected: root_word.chapter_id }, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": root_word.errors[:chapter_id].none?, "border-red-400 focus:outline-red-600": root_word.errors[:chapter_id].any?}] %>
 </div>
 
-<%= builder.fields_for :chapter do |ch| %>
-  <%= render 'shared/toggle',
-    switch_text: 'Add Chapter',
-    partial: 'chapters/fields',
-    locals: { builder: ch, chapter: ch.object } %>
-<% end %>
-
+<div class="my-5">
+  <%= builder.fields_for :chapter do |ch| %>
+    <%= render 'shared/toggle',
+      switch_text: 'Add Chapter',
+      partial: 'chapters/fields',
+      locals: { builder: ch, chapter: ch.object } %>
+  <% end %>
+</div>
