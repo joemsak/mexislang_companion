@@ -1,0 +1,37 @@
+<%= form_with(model: expression, class: "contents") do |form| %>
+  <% if expression.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(expression.errors.count, "error") %> prohibited this expression from being saved:</h2>
+
+      <ul class="list-disc ml-6">
+        <% expression.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :en_us %>
+    <%= form.text_field :en_us, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": expression.errors[:en_us].none?, "border-red-400 focus:outline-red-600": expression.errors[:en_us].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :es_mx %>
+    <%= form.text_field :es_mx, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": expression.errors[:es_mx].none?, "border-red-400 focus:outline-red-600": expression.errors[:es_mx].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :page %>
+    <%= form.number_field :page, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": expression.errors[:page].none?, "border-red-400 focus:outline-red-600": expression.errors[:page].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :root_word_id %>
+    <%= form.text_field :root_word_id, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": expression.errors[:root_word_id].none?, "border-red-400 focus:outline-red-600": expression.errors[:root_word_id].any?}] %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
