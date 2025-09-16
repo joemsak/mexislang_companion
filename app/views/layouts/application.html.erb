@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full">
   <head>
     <title><%= content_for(:title) || "Mexislang Companion" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -22,11 +22,11 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="h-full dark:bg-gray-900 dark:text-white">
     <nav class="flex p-4 gap-4">
-      <%= link_to 'Expressions', expressions_path, class: "underline dark:text-white" %>
-      <%= link_to 'Root words', root_words_path, class: "underline dark:text-white" %>
-      <%= link_to 'Chapters', chapters_path, class: "underline dark:text-white" %>
+      <%= render "shared/link_to", text: 'Expressions', path: expressions_path %>
+      <%= render "shared/link_to", text: 'Root words', path: root_words_path %>
+      <%= render "shared/link_to", text: 'Chapters', path: chapters_path %>
     </nav>
 
     <main class="container mx-auto mt-4 md:mt-28 px-5 flex">

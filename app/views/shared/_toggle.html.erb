@@ -1,6 +1,6 @@
 <%= content_tag :div, data: { controller: :toggle } do %>
   <%= button_tag data: { toggle_target: :switch, action: 'toggle#toggle:prevent' },
-    class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium dark:text-gray-900" do %>
+    class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium dark:text-gray-900 cursor-pointer" do %>
     <%= switch_text %>
   <% end %>
 
