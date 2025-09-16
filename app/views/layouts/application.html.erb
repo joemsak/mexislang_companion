@@ -23,6 +23,12 @@
   </head>
 
   <body>
+    <nav class="flex p-4 gap-4">
+      <%= link_to 'Expressions', expressions_path, class: "underline dark:text-white" %>
+      <%= link_to 'Root words', root_words_path, class: "underline dark:text-white" %>
+      <%= link_to 'Chapters', chapters_path, class: "underline dark:text-white" %>
+    </nav>
+
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>

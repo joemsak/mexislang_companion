@@ -81,6 +81,19 @@ class ExpressionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def expression_params
-      params.expect(expression: [ :en_us, :es_mx, :page, :root_word_id ])
+      params.expect(
+        expression: [
+          :en_us,
+          :es_mx,
+          :page,
+          :root_word_id,
+          root_word_attributes: [
+            :display_name,
+            :page,
+            :chapter_id,
+            chapter_attributes: [ :title, :page ]
+          ]
+        ]
+      )
     end
 end

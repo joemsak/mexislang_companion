@@ -2,8 +2,8 @@
 # check=error=true
 
 # This Dockerfile is designed for production, not development. Use with Kamal or build'n'run by hand:
-# docker build -t mexislang_companion .
-# docker run -d -p 80:80 -e RAILS_MASTER_KEY=<value from config/master.key> --name mexislang_companion mexislang_companion
+# docker build -t mexislang .
+# docker run -d -p 3001:80 -e RAILS_MASTER_KEY=<value from config/master.key> --name mexislang mexislang
 
 # For a containerized dev environment, see Dev Containers: https://guides.rubyonrails.org/getting_started_with_devcontainer.html
 
@@ -63,6 +63,8 @@ RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp
 USER 1000:1000
+
+VOLUME /rails/storage
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
