@@ -3,7 +3,7 @@ class ExpressionsController < ApplicationController
 
   # GET /expressions or /expressions.json
   def index
-    @expressions = Expression.all
+    @expressions = Expression.order(:en_us)
   end
 
   # GET /expressions/1 or /expressions/1.json

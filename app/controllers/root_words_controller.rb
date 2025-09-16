@@ -3,7 +3,7 @@ class RootWordsController < ApplicationController
 
   # GET /root_words or /root_words.json
   def index
-    @root_words = RootWord.all
+    @root_words = RootWord.order(:display_name)
   end
 
   # GET /root_words/1 or /root_words/1.json
