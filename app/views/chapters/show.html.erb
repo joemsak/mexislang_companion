@@ -9,7 +9,7 @@
 
   <%= render @chapter %>
 
-  <%= render 'shared/link_to', text: 'Edit this chapter', path: edit_chapter_path(@chapter) %>
-  <%= render 'shared/link_to', text: 'Back to chapters', path: chapters_path %>
-  <%= render 'shared/button_to', text: 'Destroy this chapter', path: @chapter, method: :delete %>
+  <%= render 'shared/link_to', text: 'Edit this chapter', path: edit_chapter_path(@chapter), variant: :secondary_button %>
+  <%= render 'shared/link_to', text: 'Back to chapters', path: chapters_path, variant: :secondary_button %>
+  <%= render 'shared/button_to', text: 'Destroy this chapter', path: @chapter, method: :delete, variant: :danger %>
 </div>

@@ -9,7 +9,7 @@
 
   <%= render @root_word %>
 
-  <%= render "shared/link_to", text: "Edit this root word", path: edit_root_word_path(@root_word) %>
-  <%= render "shared/link_to", text: "Back to root words", path: root_words_path %>
-  <%= render "shared/button_to", text: "Destroy this root word", path: @root_word, method: :delete %>
+  <%= render "shared/link_to", text: "Edit this root word", path: edit_root_word_path(@root_word), variant: :secondary_button %>
+  <%= render "shared/link_to", text: "Back to root words", path: root_words_path, variant: :secondary_button %>
+  <%= render "shared/button_to", text: "Destroy this root word", path: @root_word, method: :delete, variant: :danger %>
 </div>

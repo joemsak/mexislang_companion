@@ -91,7 +91,7 @@ class ExpressionsController < ApplicationController
             :display_name,
             :page,
             :chapter_id,
-            chapter_attributes: [ :title, :page ]
+            chapter_attributes: [ :number, :title, :page ]
           ]
         ]
       )

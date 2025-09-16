@@ -13,6 +13,6 @@
   </div>
   <div>
     <strong class="block font-medium mb-1">Root word:</strong>
-    <%= expression.root_word_id %>
+    <%= link_to expression.root_word_display_name, expression.root_word, class: "underline dark:text-white" %>
   </div>
 </div>

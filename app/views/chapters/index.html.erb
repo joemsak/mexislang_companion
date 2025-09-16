@@ -7,7 +7,7 @@
 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Chapters</h1>
-    <%= link_to "New chapter", new_chapter_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+    <%= render "shared/link_to", text: "New chapter", path: new_chapter_path, variant: :primary_button %>
   </div>
 
   <div id="chapters" class="min-w-full divide-y divide-gray-200 space-y-5">
@@ -16,9 +16,9 @@
         <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">
           <%= render chapter %>
           <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
-            <%= render 'shared/link_to', text: 'Show', path: chapter %>
-            <%= render 'shared/link_to', text: 'Edit', path: edit_chapter_path(chapter) %>
-            <%= render 'shared/button_to', text: 'Destroy', path: chapter, method: :delete %>
+            <%= render 'shared/link_to', text: 'Show', path: chapter, variant: :secondary_button %>
+            <%= render 'shared/link_to', text: 'Edit', path: edit_chapter_path(chapter), variant: :secondary_button %>
+            <%= render 'shared/button_to', text: 'Destroy', path: chapter, method: :delete, variant: :danger %>
           </div>
         </div>
       <% end %>

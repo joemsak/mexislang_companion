@@ -9,6 +9,6 @@
     root_words: @root_words,
     chapters: @chapters %>
 
-  <%= render "shared/link_to", text: "Show this expression", path: @expression %>
-  <%= render "shared/link_to", text: "Back to expressions", path: expressions_path %>
+  <%= render "shared/link_to", text: "Show this expression", path: @expression, variant: :secondary_button %>
+  <%= render "shared/link_to", text: "Back to expressions", path: expressions_path, variant: :secondary_button %>
 </div>

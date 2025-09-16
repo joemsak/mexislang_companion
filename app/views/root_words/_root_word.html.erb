@@ -9,6 +9,6 @@
   </div>
   <div>
     <strong class="block font-medium mb-1">Chapter:</strong>
-    <%= root_word.chapter_id %>
+    <%= render "shared/link_to", text: root_word.chapter_display_name, path: root_word.chapter, variant: :secondary_button %>
   </div>
 </div>

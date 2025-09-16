@@ -1,7 +1,7 @@
 class RootWord < ApplicationRecord
   belongs_to :chapter
 
-  delegate :title,
+  delegate :display_name, :title,
     to: :chapter,
     prefix: true
 

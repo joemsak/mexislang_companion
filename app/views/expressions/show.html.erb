@@ -9,7 +9,7 @@
 
   <%= render @expression %>
 
-  <%= render "shared/link_to", text: "Edit this expression", path: edit_expression_path(@expression) %>
-  <%= render "shared/link_to", text: "Back to expressions", path: expressions_path %>
-  <%= render "shared/button_to", text: "Destroy this expression", path: @expression, method: :delete %>
+  <%= render "shared/link_to", text: "Edit this expression", path: edit_expression_path(@expression), variant: :secondary_button %>
+  <%= render "shared/link_to", text: "Back to expressions", path: expressions_path, variant: :secondary_button %>
+  <%= render "shared/button_to", text: "Destroy this expression", path: @expression, method: :delete, variant: :danger %>
 </div>
