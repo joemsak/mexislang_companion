@@ -1,4 +1,15 @@
+<%# locals: (text:, path:, method:, variant:) %>
+<%
+  form_class = %w(sm:inline-block mt-2 sm:mt-0 sm:ml-2)
+  button_class = %w(w-full rounded-md px-3.5 py-2.5 font-medium cursor-pointer)
+  button_class += case variant
+    when :danger
+      %w(text-white bg-red-600 hover:bg-red-500)
+    else
+      []
+    end
+%>
 <%= button_to text, path, method:,
-  form_class: "sm:inline-block mt-2 sm:mt-0 sm:ml-2",
-  class: "w-full rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer",
+  form_class:,
+  class: button_class,
   data: { turbo_confirm: "Are you sure?" } %>

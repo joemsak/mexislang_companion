@@ -1,12 +1,15 @@
-<%# locals(variant: :default) %>
+<%# locals: (text:, path:, variant: :default, size: 'font-medium', display: nil) %>
 <%
+  button_style = %W(#{display || 'block'} mt-2 w-full sm:w-auto text-center rounded-md px-3.5 py-2.5)
+  size = Array(size)
+
   class_list = case variant
     when :default
-      %(underline dark:text-white)
+      size + %W(#{display || 'inline'} underline dark:text-white)
     when :primary_button
-      %(rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium)
+      button_style + size + %w(bg-blue-600 hover:bg-blue-500 text-white block)
     when :secondary_button
-      %(w-full sm:w-auto text-center rounded-md mt-2 px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium dark:text-gray-900)
+      button_style + size + %w(bg-gray-100 hover:bg-gray-50 dark:text-gray-900)
     end
 %>
 
