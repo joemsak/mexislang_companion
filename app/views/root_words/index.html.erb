@@ -5,7 +5,7 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <div class="flex justify-between items-center">
+  <div class="md:flex md:justify-between md:items-center">
     <h1 class="font-bold text-4xl">Root words</h1>
     <%= render "shared/link_to", text: "New root word", path: new_root_word_path, variant: :primary_button %>
   </div>
@@ -13,15 +13,7 @@
   <div id="root_words" class="min-w-full divide-y divide-gray-200 space-y-5">
     <% if @root_words.any? %>
       <% @root_words.each do |root_word| %>
-        <div class="flex flex-col sm:flex-row justify-between items-center pb-5 sm:pb-0">
-          <%= render root_word %>
-
-          <div class="w-full sm:w-auto flex flex-col sm:flex-row space-x-2 space-y-2">
-            <%= render 'shared/link_to', text: "Show", path: root_word, variant: :secondary_button %>
-            <%= render 'shared/link_to', text: "Edit", path: edit_root_word_path(root_word), variant: :secondary_button %>
-            <%= render 'shared/button_to', text: "Destroy", path: root_word, method: :delete, variant: :danger %>
-          </div>
-        </div>
+        <div><%= render root_word, link: true, informative: true %></div>
       <% end %>
     <% else %>
       <p class="text-center my-10">No root words found.</p>

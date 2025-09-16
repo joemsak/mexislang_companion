@@ -6,8 +6,10 @@
   <% end %>
 
   <h1 class="font-bold text-4xl">Showing root word</h1>
+  <%= render @root_word, informative: true %>
 
-  <%= render @root_word %>
+  <h2 class="font-bold text-3xl">Expressions:</h2>
+  <%= render @root_word.expressions, link: true %>
 
   <%= render "shared/link_to", text: "Edit this root word", path: edit_root_word_path(@root_word), variant: :secondary_button %>
   <%= render "shared/link_to", text: "Back to root words", path: root_words_path, variant: :secondary_button %>

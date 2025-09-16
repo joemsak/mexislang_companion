@@ -7,7 +7,7 @@
 
   <h1 class="font-bold text-4xl">Showing expression</h1>
 
-  <%= render @expression %>
+  <%= render @expression, informative: true %>
 
   <%= render "shared/link_to", text: "Edit this expression", path: edit_expression_path(@expression), variant: :secondary_button %>
   <%= render "shared/link_to", text: "Back to expressions", path: expressions_path, variant: :secondary_button %>

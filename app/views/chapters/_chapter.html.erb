@@ -1,10 +1,17 @@
-<div id="<%= dom_id chapter %>" class="w-full sm:w-auto my-5 space-y-5">
-  <div>
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= chapter.title %>
+<%# locals: (chapter:, link: false) %>
+
+<div id="<%= dom_id chapter %>" class="w-full sm:w-auto my-5">
+  <% if link %>
+    <%= render "shared/link_to", text: chapter.display_name, path: chapter %>
+  <% else %>
+    <%= chapter.display_name %>
+  <% end %>
+
+  <div class="pl-4">
+    <strong class="font-medium mb-1">Page:</strong> <%= chapter.page %>
   </div>
-  <div>
-    <strong class="block font-medium mb-1">Page:</strong>
-    <%= chapter.page %>
+
+  <div class="pl-4">
+    <strong class="font-medium mb-1">Root words:</strong> <%= chapter.root_words.count %>
   </div>
 </div>

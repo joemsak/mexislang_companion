@@ -6,8 +6,10 @@
   <% end %>
 
   <h1 class="font-bold text-4xl">Showing chapter</h1>
-
   <%= render @chapter %>
+
+  <h2 class="font-bold text-3xl">Root words</h1>
+  <%= render @chapter.root_words, link: true %>
 
   <%= render 'shared/link_to', text: 'Edit this chapter', path: edit_chapter_path(@chapter), variant: :secondary_button %>
   <%= render 'shared/link_to', text: 'Back to chapters', path: chapters_path, variant: :secondary_button %>

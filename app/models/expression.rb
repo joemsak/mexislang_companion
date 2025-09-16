@@ -1,6 +1,9 @@
 class Expression < ApplicationRecord
   belongs_to :root_word
 
+  delegate :chapter,
+    to: :root_word
+
   delegate :display_name,
     to: :root_word,
     prefix: true

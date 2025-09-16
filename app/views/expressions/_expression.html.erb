@@ -1,18 +1,20 @@
-<div id="<%= dom_id expression %>" class="w-full sm:w-auto my-5 space-y-5">
-  <div>
-    <strong class="block font-medium mb-1">En us:</strong>
+<%# locals: (expression:, link: false, informative: false) %>
+
+<div id="<%= dom_id expression %>" class="w-full sm:w-auto my-5">
+  <% if link %>
+    <%= render "shared/link_to", text: expression.en_us, path: expression %>
+  <% else %>
     <%= expression.en_us %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Es mx:</strong>
-    <%= expression.es_mx %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Page:</strong>
-    <%= expression.page %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Root word:</strong>
-    <%= link_to expression.root_word_display_name, expression.root_word, class: "underline dark:text-white" %>
-  </div>
+  <% end %>
+
+  <% if informative %>
+    <div class="pl-4">
+      <%= expression.es_mx %>
+    </div>
+
+    <div class="pl-4">
+      <strong class="font-medium mb-1">Root word:</strong>
+      <%= link_to expression.root_word_display_name, expression.root_word, class: "underline dark:text-white" %>
+    </div>
+  <% end %>
 </div>
