@@ -5,11 +5,8 @@ export default class extends Controller {
   static targets = [ "switch", "content", "icon" ]
 
   connect() {
-    // this.contentTarget.classList.add('hidden')
-    if (this.contentTarget.classList.contains('hidden'))
-      this.iconTarget.innerHTML = "&plus;"
-    else
-      this.iconTarget.innerHTML = "&minus;"
+    this.contentTarget.classList.add('hidden')
+    this.iconTarget.innerHTML = "&plus;"
   }
 
   toggle() {
