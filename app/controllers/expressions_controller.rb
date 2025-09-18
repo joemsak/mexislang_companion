@@ -94,6 +94,15 @@ class ExpressionsController < ApplicationController
             chapter_attributes: [ :number, :title, :page ]
           ]
         ]
-      )
+      ).tap do |config|
+        if config[:expression][:root_word_id].present?
+          config[:expression].delete(:root_word_attributes)
+        end
+
+        if config[:expression][:root_word_attributes].present? &&
+          config[:expression][:root_word_attributes][:chapter_id].present?
+          config[:expression][:root_word_attributes].delete(:chapter_attributes)
+        end
+      end
     end
 end
