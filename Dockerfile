@@ -65,6 +65,7 @@ RUN groupadd --system --gid 1000 rails && \
 USER 1000:1000
 
 VOLUME /rails/storage
+VOLUME /rails/log
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]

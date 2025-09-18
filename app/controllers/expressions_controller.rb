@@ -95,13 +95,13 @@ class ExpressionsController < ApplicationController
           ]
         ]
       ).tap do |config|
-        if config[:expression][:root_word_id].present?
-          config[:expression].delete(:root_word_attributes)
+        if config[:root_word_id].present?
+          config.delete(:root_word_attributes)
         end
 
-        if config[:expression][:root_word_attributes].present? &&
-          config[:expression][:root_word_attributes][:chapter_id].present?
-          config[:expression][:root_word_attributes].delete(:chapter_attributes)
+        if config[:root_word_attributes].present? &&
+          config[:root_word_attributes][:chapter_id].present?
+          config[:root_word_attributes].delete(:chapter_attributes)
         end
       end
     end
