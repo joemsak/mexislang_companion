@@ -1,3 +1,11 @@
+<%# locals: (builder:, root_word:, chapters:, margin_top: 5, margin_bottom: 5) %>
+
+<%
+  top_field_css = "mb-5 mt-#{margin_top}"
+  bottom_field_css = "mt-5 mb-#{margin_bottom}"
+%>
+
+
 <% if root_word.errors.any? %>
   <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
     <h2><%= pluralize(root_word.errors.count, "error") %> prohibited this root_word from being saved:</h2>
@@ -10,7 +18,7 @@
   </div>
 <% end %>
 
-<div class="my-5">
+<div class="<%= top_field_css %>">
   <%= builder.label :display_name %>
   <%= builder.text_field :display_name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": root_word.errors[:display_name].none?, "border-red-400 focus:outline-red-600": root_word.errors[:display_name].any?}] %>
 </div>
@@ -25,11 +33,14 @@
   <%= builder.collection_select :chapter_id, chapters, :id, :title, { prompt: true, selected: root_word.chapter_id }, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": root_word.errors[:chapter_id].none?, "border-red-400 focus:outline-red-600": root_word.errors[:chapter_id].any?}] %>
 </div>
 
-<div class="my-5">
+<div class="<%= bottom_field_css %>">
   <%= builder.fields_for :chapter do |ch| %>
     <%= render 'shared/toggle',
-      switch_text: 'Add Chapter',
+      switch_text: 'New Chapter',
       partial: 'chapters/fields',
-      locals: { builder: ch, chapter: ch.object } %>
+      locals: { builder: ch, chapter: ch.object, margin_top: 0, margin_bottom: 0 },
+      switch_color: "text-white",
+      switch_bg: "shadow-sm bg-accent-800 hover:bg-accent-600",
+      content_css: "mt-2 p-4 shadow-sm rounded bg-accent-800" %>
   <% end %>
 </div>

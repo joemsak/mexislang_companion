@@ -1,10 +1,26 @@
+<%# locals: (switch_text:, partial:, locals: {}, switch_color: "text-gray-900", switch_bg: 'bg-blue-300 hover:bg-blue-100', content_css: '') %>
+
 <%= content_tag :div, data: { controller: :toggle } do %>
   <%= button_tag data: { toggle_target: :switch, action: 'toggle#toggle:prevent' },
-    class: "w-full sm:w-auto text-center mt-2 sm:mt-0 sm:ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium dark:text-gray-900 cursor-pointer" do %>
-    <%= switch_text %>
+    class: %(
+      #{switch_bg}
+      #{switch_color}
+      sm:w-auto
+      mt-2
+      sm:mt-0
+      sm:ml-4
+      rounded-md
+      px-2.5
+      py-1.5
+      inline-block
+      font-medium
+      cursor-pointer
+    ) do %>
+      <%= content_tag :i, "", data: { toggle_target: :icon } %>
+      <%= switch_text %>
   <% end %>
 
-  <%= content_tag :div, data: { toggle_target: :content } do %>
+  <%= content_tag :div, data: { toggle_target: :content }, class: content_css do %>
     <%= render partial:, locals: %>
   <% end %>
 <% end %>

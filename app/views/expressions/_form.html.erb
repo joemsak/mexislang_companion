@@ -34,9 +34,12 @@
   <div class="my-5">
     <%= fields_for "expression[root_word_attributes]", root_word do |rw| %>
       <%= render 'shared/toggle',
-        switch_text: 'Add Root Word',
+        switch_text: 'New root word',
         partial: 'root_words/fields',
-        locals: { builder: rw, root_word:, chapters: } %>
+        locals: { builder: rw, root_word:, chapters:, margin_top: 0, margin_bottom: 0 },
+        switch_color: "text-white",
+        switch_bg: "bg-secondary-800 hover:bg-secondary-600",
+        content_css: "rounded mt-2 p-2 bg-secondary-800" %>
     <% end %>
   </div>
 

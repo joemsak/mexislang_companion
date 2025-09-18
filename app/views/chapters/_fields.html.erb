@@ -1,3 +1,10 @@
+<%# locals: (builder:, chapter:, margin_top: 5, margin_bottom: 5) %>
+
+<%
+  top_field_css = "mb-5 mt-#{margin_top}"
+  bottom_field_css = "mt-5 mb-#{margin_bottom}"
+%>
+
 <% if chapter.errors.any? %>
   <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
     <h2><%= pluralize(chapter.errors.count, "error") %> prohibited this chapter from being saved:</h2>
@@ -10,7 +17,7 @@
   </div>
 <% end %>
 
-<div class="my-5">
+<div class="<%= top_field_css %>">
   <%= builder.label :number %>
   <%= builder.number_field :number, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": chapter.errors[:number].none?, "border-red-400 focus:outline-red-600": chapter.errors[:number].any?}] %>
 </div>
@@ -20,7 +27,7 @@
   <%= builder.text_field :title, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": chapter.errors[:title].none?, "border-red-400 focus:outline-red-600": chapter.errors[:title].any?}] %>
 </div>
 
-<div class="my-5">
+<div class="<%= bottom_field_css %>">
   <%= builder.label :page %>
   <%= builder.number_field :page, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": chapter.errors[:page].none?, "border-red-400 focus:outline-red-600": chapter.errors[:page].any?}] %>
 </div>
