@@ -1,4 +1,4 @@
-<%# locals: (builder:, chapter:, margin_top: 5, margin_bottom: 5) %>
+<%# locals: (builder: false, chapter:, margin_top: 5, margin_bottom: 5) %>
 
 <%
   top_field_css = "mb-5 mt-#{margin_top}"
@@ -18,16 +18,31 @@
 <% end %>
 
 <div class="<%= top_field_css %>">
-  <%= builder.label :number %>
-  <%= builder.number_field :number, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": chapter.errors[:number].none?, "border-red-400 focus:outline-red-600": chapter.errors[:number].any?}] %>
+  <% if builder %>
+    <%= builder.label :number %>
+    <%= builder.number_field :number, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": chapter.errors[:number].none?, "border-red-400 focus:outline-red-600": chapter.errors[:number].any?}] %>
+  <% else %>
+    <%= label_tag :chapter_number %>
+    <%= number_field_tag :chapter_number, nil, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": chapter.errors[:number].none?, "border-red-400 focus:outline-red-600": chapter.errors[:number].any?}] %>
+  <% end %>
 </div>
 
 <div class="my-5">
-  <%= builder.label :title %>
-  <%= builder.text_field :title, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": chapter.errors[:title].none?, "border-red-400 focus:outline-red-600": chapter.errors[:title].any?}] %>
+  <% if builder %>
+    <%= builder.label :title %>
+    <%= builder.text_field :title, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": chapter.errors[:title].none?, "border-red-400 focus:outline-red-600": chapter.errors[:title].any?}] %>
+  <% else %>
+    <%= label_tag :chapter_title %>
+    <%= text_field_tag :chapter_title, nil, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": chapter.errors[:title].none?, "border-red-400 focus:outline-red-600": chapter.errors[:title].any?}] %>
+  <% end %>
 </div>
 
 <div class="<%= bottom_field_css %>">
-  <%= builder.label :page %>
-  <%= builder.number_field :page, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": chapter.errors[:page].none?, "border-red-400 focus:outline-red-600": chapter.errors[:page].any?}] %>
+  <% if builder %>
+    <%= builder.label :page %>
+    <%= builder.number_field :page, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": chapter.errors[:page].none?, "border-red-400 focus:outline-red-600": chapter.errors[:page].any?}] %>
+  <% else %>
+    <%= label_tag :chapter_page %>
+    <%= number_field_tag :chapter_page, nil, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": chapter.errors[:page].none?, "border-red-400 focus:outline-red-600": chapter.errors[:page].any?}] %>
+  <% end %>
 </div>

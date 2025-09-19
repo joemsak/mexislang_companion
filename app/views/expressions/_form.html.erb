@@ -42,6 +42,23 @@
   </div>
 
   <div class="my-5">
+    <%= label_tag :root_word_chapter_id %>
+    <%= collection_select :root_word, :chapter_id, chapters, :id, :title, { prompt: true, selected: root_word.chapter_id }, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": root_word.errors[:chapter_id].none?, "border-red-400 focus:outline-red-600": root_word.errors[:chapter_id].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= fields_for :chapter do %>
+      <%= render 'shared/toggle',
+        switch_text: 'New Chapter',
+        partial: 'chapters/fields',
+        locals: { chapter: Chapter.new, margin_top: 0, margin_bottom: 0 },
+        switch_color: "text-white",
+        switch_bg: "shadow-sm bg-accent-800 hover:bg-accent-600",
+        content_css: "mt-2 p-4 shadow-sm rounded bg-accent-800" %>
+    <% end %>
+  </div>
+
+  <div class="my-5">
     <%= fields_for "expression[root_word_attributes]", root_word do |rw| %>
       <%= render 'shared/toggle',
         switch_text: 'New root word',
@@ -54,6 +71,6 @@
   </div>
 
   <div class="inline">
-    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class: "w-full rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>

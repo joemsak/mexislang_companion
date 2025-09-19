@@ -105,15 +105,24 @@ class ExpressionsController < ApplicationController
         end
 
         if config[:root_word_id].blank? && params[:also_root_word]
-          config[:root_word_attributes] = {
-            display_name: config[:es_mx],
-            chapter_id: params[:chapter_id],
-            chapter_attributes: params[:chapter_attributes]
-          }.compact_blank
+          # Copy mexican expression to display name
+          display_name = config[:es_mx]
 
-          if config[:root_word_same_page]
-            config[:root_word_attributes][:page] = config[:page]
-          end
+          # Use same page if it's checked, or expect root_word_page
+          page = params[:root_word_same_page] ? config[:page] : params[:root_word_page]
+
+          chapter_id = params[:root_word][:chapter_id]
+          chapter_attributes = {}
+          chapter_attributes[:number] = params[:chapter_number] if params[:chapter_number].present?
+          chapter_attributes[:title] = params[:chapter_title] if params[:chapter_title].present?
+          chapter_attributes[:page] = params[:chapter_page] if params[:chapter_page].present?
+
+          config[:root_word_attributes] = {
+            display_name:,
+            page:,
+            chapter_id:,
+            chapter_attributes:
+          }.compact_blank
         end
       end
     end
