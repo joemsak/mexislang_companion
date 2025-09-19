@@ -103,6 +103,18 @@ class ExpressionsController < ApplicationController
           config[:root_word_attributes][:chapter_id].present?
           config[:root_word_attributes].delete(:chapter_attributes)
         end
+
+        if config[:root_word_id].blank? && params[:also_root_word]
+          config[:root_word_attributes] = {
+            display_name: config[:es_mx],
+            chapter_id: params[:chapter_id],
+            chapter_attributes: params[:chapter_attributes]
+          }.compact_blank
+
+          if config[:root_word_same_page]
+            config[:root_word_attributes][:page] = config[:page]
+          end
+        end
       end
     end
 end

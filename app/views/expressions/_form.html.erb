@@ -31,6 +31,16 @@
     <%= form.collection_select :root_word_id, root_words, :id, :display_name, { prompt: true, selected: form.object.root_word_id }, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": expression.errors[:root_word_id].none?, "border-red-400 focus:outline-red-600": expression.errors[:root_word_id].any?}] %>
   </div>
 
+  <div class="my-5" data-controller="also-root-word">
+    <%= check_box_tag :also_root_word, data: { action: "also-root-word#checkSamePage" } %>
+    <%= label_tag :also_root_word, "This expression is also a root word", class: "select-none" %>
+
+    <div>
+      <%= check_box_tag :root_word_same_page, data: { also_root_word_target: :samePage } %>
+      <%= label_tag :root_word_same_page, "Root word is on the same page", class: "select-none" %>
+    </div>
+  </div>
+
   <div class="my-5">
     <%= fields_for "expression[root_word_attributes]", root_word do |rw| %>
       <%= render 'shared/toggle',
@@ -39,7 +49,7 @@
         locals: { builder: rw, root_word:, chapters:, margin_top: 0, margin_bottom: 0 },
         switch_color: "text-white",
         switch_bg: "bg-secondary-800 hover:bg-secondary-600",
-        content_css: "rounded mt-2 p-2 bg-secondary-800" %>
+        content_css: "rounded mt-2 p-2 md:pl-0 bg-secondary-800" %>
     <% end %>
   </div>
 
