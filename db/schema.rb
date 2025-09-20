@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_15_180737) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_20_184513) do
   create_table "chapters", force: :cascade do |t|
     t.string "title"
     t.integer "page"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "number"
+  end
+
+  create_table "examples", force: :cascade do |t|
+    t.integer "page"
+    t.string "en_us"
+    t.string "es_mx"
+    t.integer "root_word_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["root_word_id"], name: "index_examples_on_root_word_id"
   end
 
   create_table "expressions", force: :cascade do |t|
@@ -38,6 +48,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_15_180737) do
     t.index ["chapter_id"], name: "index_root_words_on_chapter_id"
   end
 
+  add_foreign_key "examples", "root_words"
   add_foreign_key "expressions", "root_words"
   add_foreign_key "root_words", "chapters"
 end

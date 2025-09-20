@@ -1,6 +1,7 @@
 class RootWord < ApplicationRecord
   belongs_to :chapter
 
+  has_many :examples, inverse_of: :root_word
   has_many :expressions, inverse_of: :root_word
 
   delegate :display_name, :title,

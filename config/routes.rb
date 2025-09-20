@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :expressions
+  resources :examples
   resources :root_words
   resources :chapters
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
